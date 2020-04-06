@@ -1,11 +1,16 @@
+# coding=utf-8
+import os
 from configparser import ConfigParser
 
 
 class Parse_INI():
     def __init__(self, filepath):
-        self.filepath = filepath
-        self.config = ConfigParser()
-        self.config.read(self.filepath, encoding="utf-8")
+        if os.path.exists(filepath):
+            self.filepath = filepath
+            self.config = ConfigParser()
+            self.config.read(self.filepath, encoding="utf-8")
+        else:
+            raise FileNotFoundError("文件不存在")
 
     """
     获取
@@ -59,5 +64,5 @@ class Parse_INI():
 if __name__ == '__main__':
     o = Parse_INI("../Config/item.ini")
     a = o.get_opt_val_all("ip_address")
-    o.add_section_option("ip_address","d","ff")
+    o.add_section_option("ip_address", "d", "ff")
     print(a)
