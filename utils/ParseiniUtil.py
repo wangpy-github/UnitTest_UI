@@ -10,7 +10,7 @@ class Parse_INI():
             self.config = ConfigParser()
             self.config.read(self.filepath, encoding="utf-8")
         else:
-            raise FileNotFoundError("文件不存在")
+            raise FileNotFoundError("ini文件不存在")
 
     """
     获取

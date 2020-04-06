@@ -9,7 +9,7 @@ class YamlReader():
         if os.path.exists(filepath):
             self.filepath = filepath
         else:
-            raise FileNotFoundError("文件不存在")
+            raise FileNotFoundError("yml文件不存在")
         self._data = None
         self._data_all = None
 
