@@ -1,46 +1,36 @@
-from selenium.webdriver.common.by import By
+#coding=utf-8
+from common.Base import Base
+from test.page.baidu_locator import LoginPageLocators
 
 
-class BasePage():
-    def __init__(self, driver):
-        self.driver = driver
-
-
-class LoginPage(BasePage):
+class LoginPage(Base):
     """用户登陆页面"""
 
     def click_login_button(self):
-        login_button = (By.XPATH, '//*[@id="u1"]/a[8]')  # 首页登陆按钮
-        el = self.driver.find_element(*login_button)
+        el = self.locate_element(LoginPageLocators().login_button)  # 点击首页登陆按钮
         el.click()
 
     def click_UserName_Login_name(self):
-        UserName_Login_name = (By.ID, 'TANGRAM__PSP_10__footerULoginBtn')  # 选择用户名登陆按钮
-        el = self.driver.find_element(*UserName_Login_name)
+        el = self.locate_element(LoginPageLocators().UserName_Login_name)  # 点击选择用户名登陆按钮
         el.click()
 
     def click_UserName_Login_code(self):
-        UserName_Login_code = (By.ID, 'TANGRAM__PSP_10__footerQrcodeBtn')  # 选择扫码登陆按钮
-        el = self.driver.find_element(*UserName_Login_code)
+        el = self.locate_element(LoginPageLocators().UserName_Login_code)  # 点击选择扫码登陆按钮
         el.click()
 
     def input_UserName(self):
-        UserName = (By.ID, 'TANGRAM__PSP_10__userName')  # 登录名
-        el = self.driver.find_element(*UserName)
-        el.send_keys("掩沙")
+        el = self.locate_element(LoginPageLocators().UserName)  # 输入登录名
+        el.send_keys("xxxxxx")
 
     def input_PassWord(self):
-        PassWord = (By.ID, 'TANGRAM__PSP_10__password')  # 登录密码
-        el = self.driver.find_element(*PassWord)
+        el = self.locate_element(LoginPageLocators().PassWord)  # 输入登录密码
         print(el)
-        el.send_keys("wpy620606")
+        el.send_keys("xxxxxx")
 
     def click_LoginButton(self):
-        LoginButton = (By.ID, 'TANGRAM__PSP_10__submit')  # 登录按钮
-        el = self.driver.find_element(*LoginButton)
+        el = self.locate_element(LoginPageLocators().LoginButton)  # 点击登录按钮
         el.click()
 
     def get_LoginName(self):
-        LoginName = (By.XPATH, '//*[@id="ibx-uc"]/div/div[2]/a')  # 登录后的名字
-        el = self.driver.find_element(*LoginName)
-        return el
+        el = self.locate_element(LoginPageLocators().LoginName)  # 获取登录后的名字
+        return el.text
